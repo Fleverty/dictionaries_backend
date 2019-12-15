@@ -5,4 +5,4 @@
 # Thirthly start server
 ``nodemon server``
 If you will see ``Connected to port 4000`` and after that ``Database successfully connected`` - then...
-# ALL IS OK"# dictionaries_backend" 
+# ALL IS OK 
