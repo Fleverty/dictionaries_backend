@@ -1,22 +1,10 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const dbConfig = require('./database/db');
-const countryRoute = require('./routes/countries.routes');
+const employeesRoute = require('./routes/employees.routes');
+const createError = require('http-errors');
 
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-}).then(() => {
-		console.log('Database sucessfully connected')
-	},
-	error => {
-		console.log('Database could not connected: ' + error)
-	}
-);
 
 const app = express();
 app.use(bodyParser.json());
@@ -26,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
 app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-app.use('/api', countryRoute);
+app.use('/api', employeesRoute);
 
 // Create port
 const port = process.env.PORT || 4000;
